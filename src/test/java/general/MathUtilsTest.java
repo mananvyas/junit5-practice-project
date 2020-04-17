@@ -1,15 +1,27 @@
 package general;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//TestInstance will make sure that instance of a class will created only once to reduce burden at test run,
+//rather than creating at each method run
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_METHOD) -- This will create instance at each method run
 class MathUtilsTest {
 
     MathUtils mathUtils;
 
+    //Note:
+    // BeforeAll even gets executed before the instance of class is created
+    // hence method marked with BeforeAll/AfterAll annotation MUST be marked as static - so that those are available
+    // regardless of class instance. - Very Important concept.
+
+    @BeforeAll
+    static void setUpBeforeAll(){
+        System.out.println("Simple Before All");
+    }
     @BeforeEach
     void setUp() {
         mathUtils = new MathUtils();
@@ -17,6 +29,7 @@ class MathUtilsTest {
 
     @AfterEach
     void tearDown() {
+        //Nothing as of now
     }
 
     @Test
