@@ -8,10 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MathUtilsTest {
 
-    MathUtils mathUtils = new MathUtils();
+    MathUtils mathUtils;
 
     @BeforeEach
     void setUp() {
+        mathUtils = new MathUtils();
     }
 
     @AfterEach
