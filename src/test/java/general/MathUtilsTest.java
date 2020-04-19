@@ -37,27 +37,31 @@ class MathUtilsTest {
         //Nothing as of now
     }
 
-    @Test
-    @EnabledOnOs(OS.WINDOWS)//Enabled for specific OS.
-    @DisplayName("Simply Add 2 Positive Integers")
-    void addPositiveInteger() {
-        int expected = 2;
-        int actual = mathUtils.add(1,1);
-        assertEquals(expected, actual);
+    @Nested
+    @DisplayName("All Add Tests Together")
+    class AddTest {
+        @Test
+        @EnabledOnOs(OS.WINDOWS)//Enabled for specific OS.
+        @DisplayName("Simply Add 2 Positive Integers")
+        void addPositiveInteger() {
+            int expected = 2;
+            int actual = mathUtils.add(1, 1);
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        @EnabledOnJre(JRE.JAVA_8)
+            //Enabled for specific version of JRE..
+        void addOneNegativeInteger() {
+            boolean isServerUp = true;//Change this value to fail the testcase
+
+            //Putting assumptions and running tested if given assumption is true or false.
+            assumeTrue(isServerUp);
+            int expected = 3;
+            int actual = mathUtils.add(5, -2);
+            assertEquals(expected, actual);
+        }
     }
-
-    @Test
-    @EnabledOnJre(JRE.JAVA_8) //Enabled for specific version of JRE..
-    void addOneNegativeInteger() {
-        boolean isServerUp = true;//Change this value to fail the testcase
-
-        //Putting assumptions and running tested if given assumption is true or false.
-        assumeTrue(isServerUp);
-        int expected = 3;
-        int actual = mathUtils.add(5,-2);
-        assertEquals(expected, actual);
-    }
-
     @Test
     void addNegativeInteger() {
         int expected = -6;
