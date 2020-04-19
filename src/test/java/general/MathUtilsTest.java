@@ -33,6 +33,7 @@ class MathUtilsTest {
     }
 
     @Test
+    @DisplayName("Simply Add 2 Positive Integers")
     void addPositiveInteger() {
         int expected = 2;
         int actual = mathUtils.add(1,1);
@@ -67,5 +68,11 @@ class MathUtilsTest {
         //Comment and Uncomment following 2 lines to verify assertThrows working
         assertThrows(ArithmeticException.class, () ->  mathUtils.divide(1, 0));
         //assertThrows(NullPointerException.class, () ->  mathUtils.divide(1, 0));
+    }
+
+    @Test
+    @Disabled
+    void testDisabled(){
+        fail("TDD method, should not run");
     }
 }
